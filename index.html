@@ -23,6 +23,20 @@
         margin: 0;
         padding: 20px;
       }
+      #open-calendar {
+        padding: 10px 20px; /* Увеличиваем размер */
+        font-size: 1.1em; /* Немного увеличиваем шрифт */
+        font-weight: bold;
+        color: #fff; /* Текст белый */
+        background-color: #2a9d8f; /* Основной цвет кнопки */
+        border: none;
+        border-radius: 4px; /* Более округлые края */
+        cursor: pointer;
+        transition: all 0.3s ease; /* Плавный переход для всех изменений */
+      }
+      #open-calendar:hover {
+        background-color: #21867a;
+      }
       #overlay {
         position: fixed;
         top: 0;
@@ -94,14 +108,18 @@
       }
 
       .selected-dates {
-        margin-top: 20px;
+        margin: 20px;
         font-size: 16px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
       }
       #room-list {
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
         justify-content: center;
+        padding: 50px 0px;
       }
       /* Основной контейнер карточки */
       .room-item {
@@ -227,15 +245,85 @@
         transform: scale(0.95); /* Легкое уменьшение при клике */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Уменьшение тени */
       }
+      #calendar-block {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 800px;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      #calendar-header {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #555;
+      }
+      .close-calendar {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border: none;
+        color: #333;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .close-calendar:hover {
+        color: #ff0000; /* Красный при наведении */
+      }
+      .check-rooms {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4caf50; /* Зелёный */
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .check-rooms:hover {
+        background-color: #45a049; /* Лёгкое увеличение */
+      }
     </style>
   </head>
   <body>
-    <button id="open-calendar">Open Calendar</button>
+    <div class="selected-dates" id="selected-dates">
+      <p>Selected dates:</p>
+      <div style="display: flex; gap: 10px">
+        <p id="check-in">Check-in: N/A</p>
+        <p id="check-out">Check-out: N/A</p>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: center">
+      <button id="open-calendar">Choose dates</button>
+    </div>
+
     <div id="overlay">
-      <div>
-        <button id="close-calendar">Close Calendar</button>
+      <div id="calendar-block">
+        <button id="close-calendar" class="close-calendar">&times;</button>
+        <div id="calendar-header">Select your dates</div>
         <div id="calendar-container"></div>
-        <button id="submit-dates" disabled>Check Rooms</button>
+        <button id="submit-dates" disabled class="check-rooms">
+          Check Rooms
+        </button>
       </div>
     </div>
 
@@ -243,11 +331,6 @@
       <span id="min-nights-text"></span>
     </div>
 
-    <div class="selected-dates" id="selected-dates">
-      <p>Select your dates:</p>
-      <p id="check-in">Check-in: N/A</p>
-      <p id="check-out">Check-out: N/A</p>
-    </div>
     <div id="room-list"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -324,6 +407,7 @@
           inline: true,
           enable: availableDates,
           mode: "range",
+          showMonths: 2,
           onChange: (dates) => {
             selectedDates = dates;
             if (dates.length === 2) {
@@ -407,9 +491,6 @@
                 Per person: ${room.full_price_pp} ${room.currency_symbol}
               </p>
             </div>
-            <div class="room-meta">
-              
-            </div>
             <div class="room-actions">
               <p>${room.fullPriceBreakdown.nights} nights / 2 adults</p>
               <button>Select</button>
@@ -418,9 +499,6 @@
           roomList.appendChild(roomDiv);
         });
       }
-
-      // Инициализация: загружаем комнаты
-      // fetchRooms();
     </script>
   </body>
 </html>
