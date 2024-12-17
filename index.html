@@ -8,7 +8,21 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
+      body {
+        font-family: "Nunito", sans-serif;
+        font-style: normal;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 20px;
+      }
       #overlay {
         position: fixed;
         top: 0;
@@ -83,79 +97,135 @@
         margin-top: 20px;
         font-size: 16px;
       }
-      /* Основной контейнер списка комнат */
-      .room-list {
-        margin-top: 20px;
+      #room-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+      /* Основной контейнер карточки */
+      .room-item {
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        padding: 0 10px;
-      }
-
-      /* Элемент комнаты */
-      .room-item {
-        padding: 20px;
-        margin: 10px 0;
+        align-items: flex-start;
         border: 1px solid #ddd;
-        border-radius: 8px;
         background-color: #fff;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s, box-shadow 0.3s;
+        max-width: 700px;
       }
 
-      /* Элемент комнаты при наведении */
-      .room-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-      }
-
-      /* Заголовок комнаты */
-      .room-item h3 {
-        font-size: 1.5em;
-        margin: 1;
-        color: #333;
-      }
-
-      /* Описание комнаты */
-      .room-item p {
-        font-size: 1em;
-        color: #666;
-        line-height: 1.5;
-        margin: 10px 0;
-      }
-
-      /* Цена */
-      .room-item p.price {
-        font-size: 1.2em;
-        color: #2a9d8f;
-        font-weight: bold;
-      }
-
-      /* Список удобств */
-      .room-item h4 {
-        margin-top: 20px;
-        font-size: 1.2em;
-        color: #333;
-        margin-bottom: 10px;
-      }
-
-      .room-item ul {
-        list-style-type: none;
-        padding-left: 0;
-        font-size: 1em;
-        color: #444;
-      }
-
-      .room-item ul li {
-        margin-bottom: 8px;
-      }
-
-      /* Изображение комнаты */
+      /* Изображение слева */
       .room-item img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin-bottom: 15px;
+        object-fit: cover;
+      }
+
+      /* Правая сторона карточки */
+      .room-content {
+        display: flex;
+      }
+
+      .room-details {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        border-left: 1px solid #ddd;
+        flex-grow: 1;
+      }
+
+      .room-details h3 {
+        font-size: 1.4em;
+        margin: 0;
+        margin-bottom: 8px;
+        color: #333;
+      }
+
+      .room-details p {
+        margin: 0;
+        font-size: 1em;
+        color: #555;
+      }
+
+      .room-details ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        margin-top: auto;
+      }
+
+      .room-details ul li {
+        background-color: #f0f0f0; /* опционально: фон для элементов */
+        padding: 5px 10px;
+        border-radius: 5px; /* опционально: закругленные углы */
+        font-size: 0.9em; /* изменяем размер текста */
+        color: #333;
+      }
+      /* Блок с ночами и людьми */
+      .room-meta {
+        font-size: 0.9em;
+        color: #555;
+        margin-top: 10px;
+      }
+
+      .room-price-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+        border-top: 1px solid #ddd;
+        width: 100%; /* Растягивает блок на всю ширину родителя */
+        box-sizing: border-box; /* Учитывает padding и border в ширине */
+        padding: 10px 20px; /* Добавляем небольшой отступ сверху для эстетики */
+      }
+
+      .room-price {
+        text-align: left;
+      }
+
+      .room-price .total-price {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #2a9d8f;
+        margin: 0;
+      }
+
+      .room-price .price-per-person {
+        font-size: 0.9em;
+        color: #555;
+        margin: 0;
+      }
+
+      .room-actions {
+        display: flex;
+        gap: 20px;
+      }
+      .room-actions p {
+        font-size: 0.9em;
+        color: #555;
+      }
+      /* Кнопка "Выбрать" */
+      .room-actions button {
+        padding: 10px 20px; /* Увеличиваем размер */
+        font-size: 1.1em; /* Немного увеличиваем шрифт */
+        font-weight: bold;
+        color: #fff; /* Текст белый */
+        background-color: #2a9d8f; /* Основной цвет кнопки */
+        border: none;
+        border-radius: 4px; /* Более округлые края */
+        cursor: pointer;
+        transition: all 0.3s ease; /* Плавный переход для всех изменений */
+      }
+
+      .room-actions button:hover {
+        background-color: #21867a; /* Цвет темнее при наведении */
+        transform: scale(1.05); /* Легкое увеличение при наведении */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Увеличение тени */
+      }
+
+      .room-actions button:active {
+        transform: scale(0.95); /* Легкое уменьшение при клике */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Уменьшение тени */
       }
     </style>
   </head>
@@ -178,8 +248,7 @@
       <p id="check-in">Check-in: N/A</p>
       <p id="check-out">Check-out: N/A</p>
     </div>
-
-    <div class="room-list" id="room-list"></div>
+    <div id="room-list"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
@@ -219,7 +288,6 @@
           calendarContainer.innerHTML = "";
         }
       });
-
       async function fetchAvailability() {
         const url =
           "https://api.travelcircus.net/hotels/17080/checkins?E&party=%7B%22adults%22:2,%22children%22:%5B%5D%7D&domain=de&date_start=2025-01-01&date_end=2025-06-31";
@@ -279,7 +347,6 @@
           },
         });
       }
-
       submitDatesButton.addEventListener("click", async () => {
         if (selectedDates.length !== 2) return;
 
@@ -305,31 +372,55 @@
         }
       });
 
+      // Функция для отображения комнат
       function displayRooms(rooms) {
+        console.log(rooms);
+        const roomList = document.getElementById("room-list");
         roomList.innerHTML = "";
 
         rooms.forEach((room) => {
+          console.log("hi");
           const roomDiv = document.createElement("div");
           roomDiv.classList.add("room-item");
-          const imageUrl = room._embedded.pictures[0].offer_teaser_desktop;
+
+          const imageUrl = room._embedded.pictures[0].offer_teaser_square;
+          console.log(imageUrl);
 
           const amenitiesList = room._embedded.amenities
             .map((amenity) => `<li>${amenity.description}</li>`)
             .join("");
+          console.log(amenitiesList);
+
           roomDiv.innerHTML = `
-            <h3>${room.name}</h3>
-            <img src="${imageUrl}">
-                
-            <p>${room.description}</p>
-            <p>Price: ${room.full_formatted_price}</p>
-            <h4>Amenities:</h4>
-            <ul>
-                ${amenitiesList}
-            </ul>
-          `;
+          <div class="room-content">
+            <img src="${imageUrl}" alt="Room Image" />
+            <div class="room-details">
+              <h3>${room.name}</h3>
+              <p>Room size: ${room.room_size_min} m²</p>
+              <ul>${amenitiesList}</ul>
+            </div>
+          </div>
+          <div class="room-price-section">
+            <div class="room-price">
+              <p class="total-price">${room.full_formatted_price}</p>
+              <p class="price-per-person">
+                Per person: ${room.full_price_pp} ${room.currency_symbol}
+              </p>
+            </div>
+            <div class="room-meta">
+              
+            </div>
+            <div class="room-actions">
+              <p>${room.fullPriceBreakdown.nights} nights / 2 adults</p>
+              <button>Select</button>
+            </div>
+          </div>`;
           roomList.appendChild(roomDiv);
         });
       }
+
+      // Инициализация: загружаем комнаты
+      // fetchRooms();
     </script>
   </body>
 </html>
