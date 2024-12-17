@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flatpickr with Prices</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <style>
+      #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      #overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      .flatpickr-day {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1;
+        overflow: hidden;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      .flatpickr-day:hover {
+        background-color: #f0f8ff;
+        transform: scale(1.1);
+      }
+
+      .price-label {
+        margin-top: 2px;
+        font-size: 10px;
+        color: #666;
+        text-align: center;
+      }
+
+      .flatpickr-day.price-low {
+        background-color: #d4f8e8 !important;
+      }
+
+      .flatpickr-day.price-middle {
+        background-color: #fff3cd !important;
+      }
+
+      .flatpickr-day.price-high {
+        background-color: #f8d7da !important;
+      }
+
+      #min-nights-popup {
+        display: none;
+        position: absolute;
+        background: #fff;
+        border: 1px solid #ccc;
+        padding: 8px;
+        border-radius: 4px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .selected-dates {
+        margin-top: 20px;
+        font-size: 16px;
+      }
+      /* Основной контейнер списка комнат */
+      .room-list {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 10px;
+      }
+
+      /* Элемент комнаты */
+      .room-item {
+        padding: 20px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      /* Элемент комнаты при наведении */
+      .room-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Заголовок комнаты */
+      .room-item h3 {
+        font-size: 1.5em;
+        margin: 1;
+        color: #333;
+      }
+
+      /* Описание комнаты */
+      .room-item p {
+        font-size: 1em;
+        color: #666;
+        line-height: 1.5;
+        margin: 10px 0;
+      }
+
+      /* Цена */
+      .room-item p.price {
+        font-size: 1.2em;
+        color: #2a9d8f;
+        font-weight: bold;
+      }
+
+      /* Список удобств */
+      .room-item h4 {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .room-item ul {
+        list-style-type: none;
+        padding-left: 0;
+        font-size: 1em;
+        color: #444;
+      }
+
+      .room-item ul li {
+        margin-bottom: 8px;
+      }
+
+      /* Изображение комнаты */
+      .room-item img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="open-calendar">Open Calendar</button>
+    <div id="overlay">
+      <div>
+        <button id="close-calendar">Close Calendar</button>
+        <div id="calendar-container"></div>
+        <button id="submit-dates" disabled>Check Rooms</button>
+      </div>
+    </div>
+
+    <div id="min-nights-popup">
+      <span id="min-nights-text"></span>
+    </div>
+
+    <div class="selected-dates" id="selected-dates">
+      <p>Select your dates:</p>
+      <p id="check-in">Check-in: N/A</p>
+      <p id="check-out">Check-out: N/A</p>
+    </div>
+
+    <div class="room-list" id="room-list"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+      const openCalendarButton = document.getElementById("open-calendar");
+      const closeCalendarButton = document.getElementById("close-calendar");
+      const overlay = document.getElementById("overlay");
+      const calendarContainer = document.getElementById("calendar-container");
+      const submitDatesButton = document.getElementById("submit-dates");
+
+      const checkInText = document.getElementById("check-in");
+      const checkOutText = document.getElementById("check-out");
+      const roomList = document.getElementById("room-list");
+
+      let calendarInstance = null;
+      let selectedDates = [];
+
+      openCalendarButton.addEventListener("click", () => {
+        overlay.classList.add("show");
+
+        if (!calendarInstance) {
+          const calendarInput = document.createElement("input"); // Динамически создаем input
+          calendarInput.id = "calendar"; // Добавляем ID для Flatpickr
+          calendarContainer.appendChild(calendarInput);
+
+          initCalendar(); // Инициализируем календарь
+        }
+      });
+
+      closeCalendarButton.addEventListener("click", () => {
+        overlay.classList.remove("show");
+
+        if (calendarInstance) {
+          calendarInstance.destroy(); // Уничтожаем инстанс Flatpickr
+          calendarInstance = null;
+
+          // Удаляем input календаря, чтобы скрыть его из DOM
+          calendarContainer.innerHTML = "";
+        }
+      });
+
+      async function fetchAvailability() {
+        const url =
+          "https://api.travelcircus.net/hotels/17080/checkins?E&party=%7B%22adults%22:2,%22children%22:%5B%5D%7D&domain=de&date_start=2025-01-01&date_end=2025-06-31";
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          return data._embedded.hotel_availabilities.map((item) => ({
+            date: item.date,
+            price: item.price,
+            min_nights: item.min_nights,
+            price_position: item.price_position,
+          }));
+        } catch (error) {
+          console.error("Error fetching availability:", error.message);
+          return [];
+        }
+      }
+
+      async function initCalendar() {
+        const availability = await fetchAvailability();
+
+        const availableDates = availability.map((day) => day.date);
+        const availabilityMap = availability.reduce((map, day) => {
+          map[day.date] = day;
+          return map;
+        }, {});
+
+        calendarInstance = flatpickr("#calendar", {
+          dateFormat: "Y-m-d",
+          inline: true,
+          enable: availableDates,
+          mode: "range",
+          onChange: (dates) => {
+            selectedDates = dates;
+            if (dates.length === 2) {
+              const checkIn = dates[0].toLocaleDateString("en-CA");
+              const checkOut = dates[1].toLocaleDateString("en-CA");
+              checkInText.textContent = `Check-in: ${checkIn}`;
+              checkOutText.textContent = `Check-out: ${checkOut}`;
+              submitDatesButton.disabled = false;
+            }
+          },
+          onDayCreate: (dObj, dStr, fp, dayElem) => {
+            const date = fp.formatDate(dayElem.dateObj, "Y-m-d");
+            const dayData = availabilityMap[date];
+            if (dayData) {
+              const priceLabel = document.createElement("span");
+              priceLabel.classList.add("price-label");
+              priceLabel.textContent = `$${dayData.price}`;
+              dayElem.appendChild(priceLabel);
+              dayElem.classList.add(`price-${dayData.price_position}`);
+            }
+          },
+        });
+      }
+
+      submitDatesButton.addEventListener("click", async () => {
+        if (selectedDates.length !== 2) return;
+
+        const checkIn = selectedDates[0].toLocaleDateString("en-CA");
+        const checkOut = selectedDates[1].toLocaleDateString("en-CA");
+        console.log("In", checkIn);
+        console.log("Out", checkOut);
+
+        const url = `https://api.travelcircus.net/hotels/17080/quotes?locale=de_DE&checkin=${checkIn}&checkout=${checkOut}&party=%7B%22adults%22:2,%22children%22:[]%7D&domain=de`;
+
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          console.log("Rooms", data._embedded.hotel_quotes);
+          displayRooms(data._embedded.hotel_quotes);
+          console.log("Here");
+        } catch (error) {
+          console.error("Error fetching rooms:", error.message);
+        }
+      });
+
+      function displayRooms(rooms) {
+        roomList.innerHTML = "";
+
+        rooms.forEach((room) => {
+          const roomDiv = document.createElement("div");
+          roomDiv.classList.add("room-item");
+          const imageUrl = room._embedded.pictures[0].offer_teaser_desktop;
+
+          const amenitiesList = room._embedded.amenities
+            .map((amenity) => `<li>${amenity.description}</li>`)
+            .join("");
+          roomDiv.innerHTML = `
+            <h3>${room.name}</h3>
+            <img src="${imageUrl}">
+                
+            <p>${room.description}</p>
+            <p>Price: ${room.full_formatted_price}</p>
+            <h4>Amenities:</h4>
+            <ul>
+                ${amenitiesList}
+            </ul>
+          `;
+          roomList.appendChild(roomDiv);
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,673 @@
+{
+  "_links": {
+    "self": {
+      "href": "/hotels/17080/quotes?locale=de_DE&checkin=2025-01-05&checkout=2025-01-08&filters%5Bdomain%5D=de&filters%5Bparty%5D%5Badults%5D=2&filters%5Bcheckin_date%5D=2025-01-05&filters%5Bcheckout_date%5D=2025-01-08&limit=2"
+    }
+  },
+  "_embedded": {
+    "hotel_quotes": [
+      {
+        "name": "Standard Doppelzimmer",
+        "full_price": 297,
+        "full_price_pp": 148.5,
+        "full_formatted_price": "297,00 \u20ac",
+        "currency": "EUR",
+        "currency_symbol": "\u20ac",
+        "base_capacity": 2,
+        "min_capacity": 1,
+        "max_capacity": 2,
+        "max_adults": null,
+        "max_children": null,
+        "min_age": null,
+        "max_age": null,
+        "pool": "1",
+        "room_size_min": 25,
+        "room_size_max": 27,
+        "agePriceBreakdown": [],
+        "fullPriceBreakdown": {
+          "nights": "3",
+          "adult_price_per_night": 49.5,
+          "child_prices_per_night": []
+        },
+        "discountsSums": { "time_early": 0, "time_last": 0, "discount": 0 },
+        "formattedDiscountsSums": {
+          "time_early": "0,00 \u20ac",
+          "time_last": "0,00 \u20ac",
+          "discount": "0,00 \u20ac"
+        },
+        "description": "Standard Doppelzimmer",
+        "description_long": "Standard Doppelzimmer",
+        "translation_status": 1,
+        "_links": { "self": { "href": "/rooms/28059" } },
+        "_embedded": {
+          "pictures": [
+            {
+              "picture_id": 350564,
+              "rev": 5,
+              "order": 0,
+              "active": true,
+              "position": "left",
+              "background": "black",
+              "description": "Beispielbild Standard Doppelzimmer",
+              "alt_text": "hotel-habakuk-0",
+              "raw": "https://s3.travel-cdn.net/pictures/350564/raw.jpg?rev=1",
+              "raw_edited": "https://s3.travel-cdn.net/pictures/350564/raw_edited.jpg?rev=1",
+              "third": "https://s3.travel-cdn.net/pictures/350564/third.jpg?rev=1",
+              "wide": "https://s3.travel-cdn.net/pictures/350564/wide.jpg?rev=1",
+              "double": "https://s3.travel-cdn.net/pictures/350564/double.jpg?rev=1",
+              "full": "https://s3.travel-cdn.net/pictures/350564/full.jpg?rev=1",
+              "deal": "https://s3.travel-cdn.net/pictures/350564/deal.jpg?rev=1",
+              "event_booking": "https://s3.travel-cdn.net/pictures/350564/event_booking.jpg?rev=1",
+              "event_room": "https://s3.travel-cdn.net/pictures/350564/event_room.jpg?rev=1",
+              "2col_teaser_big": "https://s3.travel-cdn.net/pictures/350564/2col_teaser_big.jpg?rev=1",
+              "2col_teaser_small": "https://s3.travel-cdn.net/pictures/350564/2col_teaser_small.jpg?rev=1",
+              "3col_teaser_big": "https://s3.travel-cdn.net/pictures/350564/3col_teaser_big.jpg?rev=1",
+              "3col_teaser_small": "https://s3.travel-cdn.net/pictures/350564/3col_teaser_small.jpg?rev=1",
+              "square_teaser": null,
+              "offer_teaser_desktop": "https://s3.travel-cdn.net/pictures/350564/offer_teaser_desktop.jpg?rev=1",
+              "offer_teaser_ncol": "https://s3.travel-cdn.net/pictures/350564/offer_teaser_ncol.jpg?rev=1",
+              "offer_teaser_mobile": "https://s3.travel-cdn.net/pictures/350564/offer_teaser_mobile.jpg?rev=1",
+              "offer_teaser_square": "https://s3.travel-cdn.net/pictures/350564/offer_teaser_square.jpg?rev=1",
+              "feed_newsletter_wide": "https://s3.travel-cdn.net/pictures/350564/feed_newsletter_wide.jpg?rev=1",
+              "feed_newsletter_square": "https://s3.travel-cdn.net/pictures/350564/feed_newsletter_square.jpg?rev=1",
+              "gallery_hd": "https://s3.travel-cdn.net/pictures/350564/gallery_hd.jpg?rev=1",
+              "_links": { "self": { "href": "/rooms/28059/pictures/126351" } }
+            }
+          ],
+          "amenities": [
+            {
+              "name": "double-bed",
+              "description": "Doppelbett",
+              "translation_status": 1
+            },
+            {
+              "name": "desk",
+              "description": "Schreibtisch",
+              "translation_status": 1
+            },
+            {
+              "name": "minibar",
+              "description": "Minibar",
+              "translation_status": 1
+            },
+            { "name": "safe", "description": "Safe", "translation_status": 1 },
+            {
+              "name": "coffee-machine",
+              "description": "Kaffeemaschine",
+              "translation_status": 1
+            },
+            {
+              "name": "air-conditioning",
+              "description": "Klimaanlage",
+              "translation_status": 1
+            },
+            { "name": "toilet", "description": "WC", "translation_status": 1 },
+            {
+              "name": "hair-dryer",
+              "description": "F\u00f6hn",
+              "translation_status": 1
+            },
+            {
+              "name": "bathrobe",
+              "description": "Bademantel",
+              "translation_status": 1
+            },
+            {
+              "name": "slippers",
+              "description": "Hausschuhe",
+              "translation_status": 1
+            },
+            {
+              "name": "shower-or-tub",
+              "description": "Dusche oder Badewanne",
+              "translation_status": 1
+            }
+          ],
+          "addons": [
+            {
+              "addon_id": 73,
+              "price": null,
+              "party": { "adults": 2 },
+              "extra_information": null,
+              "charging_strategy": ["daily", "party"],
+              "mandatory": true,
+              "inclusive": false,
+              "charge_type": "night",
+              "picture": {
+                "picture_id": 119272,
+                "rev": 1,
+                "raw": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/raw.jpg?rev=1",
+                "raw_edited": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/raw_edited.jpg?rev=1",
+                "third": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/third.jpg?rev=1",
+                "wide": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/wide.jpg?rev=1",
+                "double": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/double.jpg?rev=1",
+                "full": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/full.jpg?rev=1",
+                "deal": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/deal.jpg?rev=1",
+                "event_booking": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/event_booking.jpg?rev=1",
+                "event_room": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/event_room.jpg?rev=1",
+                "2col_teaser_big": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/2col_teaser_big.jpg?rev=1",
+                "2col_teaser_small": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/2col_teaser_small.jpg?rev=1",
+                "3col_teaser_big": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/3col_teaser_big.jpg?rev=1",
+                "3col_teaser_small": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/3col_teaser_small.jpg?rev=1",
+                "square_teaser": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/square_teaser.jpg?rev=1",
+                "offer_teaser_desktop": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/offer_teaser_desktop.jpg?rev=1",
+                "offer_teaser_ncol": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/offer_teaser_ncol.jpg?rev=1",
+                "offer_teaser_mobile": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/offer_teaser_mobile.jpg?rev=1",
+                "offer_teaser_square": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/offer_teaser_square.jpg?rev=1",
+                "feed_newsletter_wide": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/feed_newsletter_wide.jpg?rev=1",
+                "feed_newsletter_square": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/feed_newsletter_square.jpg?rev=1",
+                "gallery_hd": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/gallery_hd.jpg?rev=1"
+              },
+              "modified_at": null,
+              "description": "T\u00e4gliche Halbpension",
+              "description_long": "Lass dich kulinarisch verw\u00f6hnen und starte morgens mit einem reichhaltigen Fr\u00fchst\u00fcck gest\u00e4rkt in den Tag. Zur Auswahl stehen frische Br\u00f6tchen, Marmeladen und knackiges Obst. Dazu gibt es Kaffee- und Teevariationen. Abends erwartet dich ein k\u00f6stliches Abendessen mit regionalen Zutaten und saisonalen Gerichten. Entdecke die kulinarische Welt des Hotels und lass den Tag in entspannter Atmosph\u00e4re und mit einem Glas Wein ausklingen.",
+              "translation_status": 1,
+              "_links": {
+                "self": { "href": "/hotels/17080/addons/daily-half-board" }
+              },
+              "_embedded": {
+                "exclusive_with": [
+                  {
+                    "addon_id": 8,
+                    "charging_strategy": ["once", "simple"],
+                    "name": "dorfhotelsylt-3-drinks-from-fridge",
+                    "global": false,
+                    "charge_type": "night",
+                    "addon_in_room": null,
+                    "addon_mandatory_in_room": null,
+                    "picture": [],
+                    "picture_id": 84,
+                    "rev": 1,
+                    "description": "3 Getr\u00e4nke aus dem K\u00fchlschrank",
+                    "description_long": "Das Dorfhotel auf Sylt bietet seinen G\u00e4sten drei kostenfreie Getr\u00e4nke aus dem K\u00fchlschrank. Direkt bei Ihrer Ankunft stehen Ihnen kalte Erfrischungsgetr\u00e4nke in Ihrem privaten Appartement  zur Verf\u00fcgung. Genie\u00dfen Sie morgens einen frischen Saft mit Blick auf die Nordsee oder eine schnelle Erfrischung nach einem langen Strandspaziergang.",
+                    "translation_status": 1,
+                    "_links": {
+                      "self": {
+                        "href": "/addons/dorfhotelsylt-3-drinks-from-fridge"
+                      }
+                    }
+                  },
+                  {
+                    "addon_id": 3346,
+                    "charging_strategy": ["daily", "person"],
+                    "name": "hotel-10124-genuss-plus-abendessen-travelcharme-werfenweng",
+                    "global": false,
+                    "charge_type": "night",
+                    "addon_in_room": null,
+                    "addon_mandatory_in_room": null,
+                    "picture": [],
+                    "picture_id": 48377,
+                    "rev": 1,
+                    "description": "Abendessen",
+                    "description_long": "Sie wollen sich rundum verw\u00f6hnen lassen? Dann ist das leckere Abendessen im Travel Charme Bergresort Werfenweng genau das Richtige f\u00fcr Sie. Genie\u00dfen Sie tags\u00fcber Tee, Wasser und frisches Obst im PURIA Premium Spa. Am Abend erleben Sie dann GreenGusto Gerichte w\u00e4hrend eines k\u00f6stlichen 4-G\u00e4nge-Men\u00fcs mit wahlweise Salat- und Vorspeisenbuffet oder als Themenbuffet.\n",
+                    "translation_status": 1,
+                    "_links": {
+                      "self": {
+                        "href": "/addons/hotel-10124-genuss-plus-abendessen-travelcharme-werfenweng"
+                      }
+                    }
+                  },
+                  {
+                    "addon_id": 4503,
+                    "charging_strategy": ["once", "party"],
+                    "name": "hotel-10181-6-gang-dinner",
+                    "global": false,
+                    "charge_type": "daily",
+                    "addon_in_room": null,
+                    "addon_mandatory_in_room": null,
+                    "picture": [],
+                    "picture_id": 66399,
+                    "rev": 1,
+                    "description": "Nachmittagsjause und 6-G\u00e4nge-Abendmen\u00fc",
+                    "description_long": "Genie\u00dfen Sie einen Abend lang absolute Genussmomente bei einem 6-G\u00e4nge-Wahlmen\u00fc. Freuen Sie sich auf alpine Speisen und internationale Gerichte, die Sie staunen lassen werden! Beenden Sie einen spannenden Tag Ihres Aufenthaltes mit einem kulinarischen Hochgenuss, wie es sich f\u00fcr einen richtigen Wellnessurlaub geh\u00f6rt!\n",
+                    "translation_status": 1,
+                    "_links": {
+                      "self": { "href": "/addons/hotel-10181-6-gang-dinner" }
+                    }
+                  },
+                  {
+                    "addon_id": 4517,
+                    "charging_strategy": ["once", "party"],
+                    "name": "hotel-11014-6-gang-dinner",
+                    "global": false,
+                    "charge_type": "daily",
+                    "addon_in_room": null,
+                    "addon_mandatory_in_room": null,
+                    "picture": [],
+                    "picture_id": 66570,
+                    "rev": 1,
+                    "description": "Einmaliges 6-G\u00e4nge-Men\u00fc",
+                    "description_long": "Sie w\u00fcnschen sich ein romantisches und wohlmundendes Dinner? Dann ist das einmalige 6-Gang-Abendwahlmen\u00fc im 5*S Alpin Palace genau das Richtige f\u00fcr Sie. Lassen Sie sich kulinarische auf allen Ebenen verw\u00f6hnen, genie\u00dfen Sie internationale und nationale Gaumenfreuden und verbringen Sie den wundervollen Abend in entspannter Atmosph\u00e4re.\n",
+                    "translation_status": 1,
+                    "_links": {
+                      "self": { "href": "/addons/hotel-11014-6-gang-dinner" }
+                    }
+                  },
+                  {
+                    "addon_id": 4618,
+                    "charging_strategy": ["once", "person"],
+                    "name": "hotel-11356-three-course-menu-smart-flats",
+                    "global": false,
+                    "charge_type": "daily",
+                    "addon_in_room": null,
+                    "addon_mandatory_in_room": null,
+                    "picture": [],
+                    "picture_id": 68582,
+                    "rev": 1,
+                    "description": "Einmaliges 3-Gang Abendessen im Restaurant EGGER Wirt",
+                    "description_long": "Zum Rundum-Verw\u00f6hnprogramm des smart Hotels geh\u00f6ren auch kulinarische Spezialit\u00e4ten aus der Region und Klassiker der internationalen K\u00fcche. Genuss pur also! Diesen k\u00f6nnen Sie bei einem abwechslungsreichen, k\u00f6stlichen 3-G\u00e4nge Men\u00fc genie\u00dfen. Lassen Sie den Urlaubstag in entspannter Atmosph\u00e4re des Hotelrestaurants und bei kreativen Gerichten ausklingen und gehen Sie auf kulinarische Entdeckungsreise.\n",
+                    "translation_status": 1,
+                    "_links": {
+                      "self": {
+                        "href": "/addons/hotel-11356-three-course-menu-smart-flats"
+                      }
+                    }
+                  },
+                  {
+                    "addon_id": 4853,
+                    "charging_strategy": ["once", "person"],
+                    "name": "abendessen",
+                    "global": true,
+                    "charge_type": "night",
+                    "addon_in_room": null,
+                    "addon_mandatory_in_room": null,
+                    "picture": [],
+                    "picture_id": 355610,
+                    "rev": 1,
+                    "description": "Abendessen",
+                    "description_long": "Lass deinen Abend entspannt ausklingen und g\u00f6nn dir zum Abschluss des Tages einen kulinarischen Hochgenuss. Das Dinner verw\u00f6hnt dich und deinen Gaumen wahlweise mit internationalen Kreationen, regionalen Schmankerln und k\u00f6stlichen Klassikern. So findest du garantiert das perfekte Gericht, bei dem du deinen Urlaubstag noch einmal geb\u00fchrend Revue passieren lassen kannst.",
+                    "translation_status": 1,
+                    "_links": { "self": { "href": "/addons/abendessen" } }
+                  }
+                ]
+              }
+            },
+            {
+              "addon_id": 118,
+              "price": null,
+              "party": { "adults": 2 },
+              "extra_information": null,
+              "charging_strategy": ["daily", "party"],
+              "mandatory": true,
+              "inclusive": false,
+              "charge_type": "night",
+              "picture": {
+                "picture_id": 11383,
+                "rev": 1,
+                "raw": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/raw.jpg?rev=1",
+                "raw_edited": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/raw_edited.jpg?rev=1",
+                "third": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/third.jpg?rev=1",
+                "wide": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/wide.jpg?rev=1",
+                "double": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/double.jpg?rev=1",
+                "full": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/full.jpg?rev=1",
+                "deal": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/deal.jpg?rev=1",
+                "event_booking": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/event_booking.jpg?rev=1",
+                "event_room": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/event_room.jpg?rev=1",
+                "2col_teaser_big": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/2col_teaser_big.jpg?rev=1",
+                "2col_teaser_small": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/2col_teaser_small.jpg?rev=1",
+                "3col_teaser_big": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/3col_teaser_big.jpg?rev=1",
+                "3col_teaser_small": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/3col_teaser_small.jpg?rev=1",
+                "square_teaser": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/square_teaser.jpg?rev=1",
+                "offer_teaser_desktop": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/offer_teaser_desktop.jpg?rev=1",
+                "offer_teaser_ncol": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/offer_teaser_ncol.jpg?rev=1",
+                "offer_teaser_mobile": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/offer_teaser_mobile.jpg?rev=1",
+                "offer_teaser_square": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/offer_teaser_square.jpg?rev=1",
+                "feed_newsletter_wide": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/feed_newsletter_wide.jpg?rev=1",
+                "feed_newsletter_square": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/feed_newsletter_square.jpg?rev=1",
+                "gallery_hd": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/gallery_hd.jpg?rev=1"
+              },
+              "modified_at": null,
+              "description": "Freie Nutzung des Wellnessbereichs",
+              "description_long": "Zur\u00fccklehnen, zur Ruhe kommen und tiefe Entspannung finden. Bei einem Besuch im Wellnessbereich bringst du K\u00f6rper, Geist und Seele ganz leicht wieder in harmonischen Einklang. Tanke mit den vielseitigen Wellness- und Verw\u00f6hnangeboten neue Kraft und sperre die Hektik und den Stress des Alltags einfach aus. Hier genie\u00dft du deinen Wohlf\u00fchlurlaub in vollen Z\u00fcgen.",
+              "translation_status": 1,
+              "_links": {
+                "self": { "href": "/hotels/17080/addons/wellness-global" }
+              }
+            }
+          ],
+          "extra_bed_age_ranges": [
+            { "min_age": 0, "max_age": 7 },
+            { "min_age": 8, "max_age": 12 },
+            { "min_age": 13, "max_age": null }
+          ]
+        }
+      },
+      {
+        "name": "Standard Doppelzimmer mit Extrabett",
+        "full_price": 357,
+        "full_price_pp": 178.5,
+        "full_formatted_price": "357,00 \u20ac",
+        "currency": "EUR",
+        "currency_symbol": "\u20ac",
+        "base_capacity": 2,
+        "min_capacity": 1,
+        "max_capacity": 3,
+        "max_adults": 2,
+        "max_children":null, 
+        "min_age": null,
+        "max_age": 12,
+        "pool": "1",
+        "room_size_min": 25,
+        "room_size_max": 27,
+        "agePriceBreakdown": [],
+        "fullPriceBreakdown": {
+          "nights": "3",
+          "adult_price_per_night": 59.5,
+          "child_prices_per_night": []
+        },
+        "discountsSums": { "time_early": 0, "time_last": 0, "discount": 0 },
+        "formattedDiscountsSums": {
+          "time_early": "0,00 \u20ac",
+          "time_last": "0,00 \u20ac",
+          "discount": "0,00 \u20ac"
+        },
+        "description": "Standard Doppelzimmer mit Extrabett",
+        "description_long": "Standard Doppelzimmer mit Extrabett",
+        "translation_status": 1,
+        "_links": { "self": { "href": "/rooms/28060" } },
+        "_embedded": {
+          "pictures": [
+            {
+              "picture_id": 350569,
+              "rev": 4,
+              "order": 0,
+              "active": true,
+              "position": "left",
+              "background": "black",
+              "description": "Beispielbild: Standard Doppelzimmer mit Extrabett",
+              "alt_text": "hotel-habakuk-0",
+              "raw": "https://s3.travel-cdn.net/pictures/350569/raw.jpg?rev=1",
+              "raw_edited": "https://s3.travel-cdn.net/pictures/350569/raw_edited.jpg?rev=1",
+              "third": "https://s3.travel-cdn.net/pictures/350569/third.jpg?rev=1",
+              "wide": "https://s3.travel-cdn.net/pictures/350569/wide.jpg?rev=1",
+              "double": "https://s3.travel-cdn.net/pictures/350569/double.jpg?rev=1",
+              "full": "https://s3.travel-cdn.net/pictures/350569/full.jpg?rev=1",
+              "deal": "https://s3.travel-cdn.net/pictures/350569/deal.jpg?rev=1",
+              "event_booking": "https://s3.travel-cdn.net/pictures/350569/event_booking.jpg?rev=1",
+              "event_room": "https://s3.travel-cdn.net/pictures/350569/event_room.jpg?rev=1",
+              "2col_teaser_big": "https://s3.travel-cdn.net/pictures/350569/2col_teaser_big.jpg?rev=1",
+              "2col_teaser_small": "https://s3.travel-cdn.net/pictures/350569/2col_teaser_small.jpg?rev=1",
+              "3col_teaser_big": "https://s3.travel-cdn.net/pictures/350569/3col_teaser_big.jpg?rev=1",
+              "3col_teaser_small": "https://s3.travel-cdn.net/pictures/350569/3col_teaser_small.jpg?rev=1",
+              "square_teaser": null,
+              "offer_teaser_desktop": "https://s3.travel-cdn.net/pictures/350569/offer_teaser_desktop.jpg?rev=1",
+              "offer_teaser_ncol": "https://s3.travel-cdn.net/pictures/350569/offer_teaser_ncol.jpg?rev=1",
+              "offer_teaser_mobile": "https://s3.travel-cdn.net/pictures/350569/offer_teaser_mobile.jpg?rev=1",
+              "offer_teaser_square": "https://s3.travel-cdn.net/pictures/350569/offer_teaser_square.jpg?rev=1",
+              "feed_newsletter_wide": "https://s3.travel-cdn.net/pictures/350569/feed_newsletter_wide.jpg?rev=1",
+              "feed_newsletter_square": "https://s3.travel-cdn.net/pictures/350569/feed_newsletter_square.jpg?rev=1",
+              "gallery_hd": "https://s3.travel-cdn.net/pictures/350569/gallery_hd.jpg?rev=1",
+              "_links": { "self": { "href": "/rooms/28060/pictures/126355" } }
+            }
+          ],
+          "amenities": [
+            {
+              "name": "double-bed",
+              "description": "Doppelbett",
+              "translation_status": 1
+            },
+            {
+              "name": "flat-tv",
+              "description": "Flat-TV",
+              "translation_status": 1
+            },
+            {
+              "name": "desk",
+              "description": "Schreibtisch",
+              "translation_status": 1
+            },
+            {
+              "name": "minibar",
+              "description": "Minibar",
+              "translation_status": 1
+            },
+            { "name": "safe", "description": "Safe", "translation_status": 1 },
+            {
+              "name": "coffee-machine",
+              "description": "Kaffeemaschine",
+              "translation_status": 1
+            },
+            {
+              "name": "air-conditioning",
+              "description": "Klimaanlage",
+              "translation_status": 1
+            },
+            { "name": "toilet", "description": "WC", "translation_status": 1 },
+            {
+              "name": "hair-dryer",
+              "description": "F\u00f6hn",
+              "translation_status": 1
+            },
+            {
+              "name": "bathrobe",
+              "description": "Bademantel",
+              "translation_status": 1
+            },
+            {
+              "name": "slippers",
+              "description": "Hausschuhe",
+              "translation_status": 1
+            },
+            {
+              "name": "einzelbett",
+              "description": "Einzelbett",
+              "translation_status": 1
+            },
+            {
+              "name": "shower-or-tub",
+              "description": "Dusche oder Badewanne",
+              "translation_status": 1
+            }
+          ],
+          "addons": [
+            {
+              "addon_id": 73,
+              "price": null,
+              "party": { "adults": 2 },
+              "extra_information": null,
+              "charging_strategy": ["daily", "party"],
+              "mandatory": true,
+              "inclusive": false,
+              "charge_type": "night",
+              "picture": {
+                "picture_id": 119272,
+                "rev": 1,
+                "raw": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/raw.jpg?rev=1",
+                "raw_edited": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/raw_edited.jpg?rev=1",
+                "third": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/third.jpg?rev=1",
+                "wide": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/wide.jpg?rev=1",
+                "double": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/double.jpg?rev=1",
+                "full": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/full.jpg?rev=1",
+                "deal": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/deal.jpg?rev=1",
+                "event_booking": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/event_booking.jpg?rev=1",
+                "event_room": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/event_room.jpg?rev=1",
+                "2col_teaser_big": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/2col_teaser_big.jpg?rev=1",
+                "2col_teaser_small": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/2col_teaser_small.jpg?rev=1",
+                "3col_teaser_big": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/3col_teaser_big.jpg?rev=1",
+                "3col_teaser_small": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/3col_teaser_small.jpg?rev=1",
+                "square_teaser": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/square_teaser.jpg?rev=1",
+                "offer_teaser_desktop": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/offer_teaser_desktop.jpg?rev=1",
+                "offer_teaser_ncol": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/offer_teaser_ncol.jpg?rev=1",
+                "offer_teaser_mobile": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/offer_teaser_mobile.jpg?rev=1",
+                "offer_teaser_square": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/offer_teaser_square.jpg?rev=1",
+                "feed_newsletter_wide": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/feed_newsletter_wide.jpg?rev=1",
+                "feed_newsletter_square": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/feed_newsletter_square.jpg?rev=1",
+                "gallery_hd": "https://travelcircus-production.s3.amazonaws.com/pictures/119272/gallery_hd.jpg?rev=1"
+              },
+              "modified_at": null,
+              "description": "T\u00e4gliche Halbpension",
+              "description_long": "Lass dich kulinarisch verw\u00f6hnen und starte morgens mit einem reichhaltigen Fr\u00fchst\u00fcck gest\u00e4rkt in den Tag. Zur Auswahl stehen frische Br\u00f6tchen, Marmeladen und knackiges Obst. Dazu gibt es Kaffee- und Teevariationen. Abends erwartet dich ein k\u00f6stliches Abendessen mit regionalen Zutaten und saisonalen Gerichten. Entdecke die kulinarische Welt des Hotels und lass den Tag in entspannter Atmosph\u00e4re und mit einem Glas Wein ausklingen.",
+              "translation_status": 1,
+              "_links": {
+                "self": { "href": "/hotels/17080/addons/daily-half-board" }
+              },
+              "_embedded": {
+                "exclusive_with": [
+                  {
+                    "addon_id": 8,
+                    "charging_strategy": ["once", "simple"],
+                    "name": "dorfhotelsylt-3-drinks-from-fridge",
+                    "global": false,
+                    "charge_type": "night",
+                    "addon_in_room": null,
+                    "addon_mandatory_in_room": null,
+                    "picture": [],
+                    "picture_id": 84,
+                    "rev": 1,
+                    "description": "3 Getr\u00e4nke aus dem K\u00fchlschrank",
+                    "description_long": "Das Dorfhotel auf Sylt bietet seinen G\u00e4sten drei kostenfreie Getr\u00e4nke aus dem K\u00fchlschrank. Direkt bei Ihrer Ankunft stehen Ihnen kalte Erfrischungsgetr\u00e4nke in Ihrem privaten Appartement  zur Verf\u00fcgung. Genie\u00dfen Sie morgens einen frischen Saft mit Blick auf die Nordsee oder eine schnelle Erfrischung nach einem langen Strandspaziergang.",
+                    "translation_status": 1,
+                    "_links": {
+                      "self": {
+                        "href": "/addons/dorfhotelsylt-3-drinks-from-fridge"
+                      }
+                    }
+                  },
+                  {
+                    "addon_id": 3346,
+                    "charging_strategy": ["daily", "person"],
+                    "name": "hotel-10124-genuss-plus-abendessen-travelcharme-werfenweng",
+                    "global": false,
+                    "charge_type": "night",
+                    "addon_in_room": null,
+                    "addon_mandatory_in_room": null,
+                    "picture": [],
+                    "picture_id": 48377,
+                    "rev": 1,
+                    "description": "Abendessen",
+                    "description_long": "Sie wollen sich rundum verw\u00f6hnen lassen? Dann ist das leckere Abendessen im Travel Charme Bergresort Werfenweng genau das Richtige f\u00fcr Sie. Genie\u00dfen Sie tags\u00fcber Tee, Wasser und frisches Obst im PURIA Premium Spa. Am Abend erleben Sie dann GreenGusto Gerichte w\u00e4hrend eines k\u00f6stlichen 4-G\u00e4nge-Men\u00fcs mit wahlweise Salat- und Vorspeisenbuffet oder als Themenbuffet.\n",
+                    "translation_status": 1,
+                    "_links": {
+                      "self": {
+                        "href": "/addons/hotel-10124-genuss-plus-abendessen-travelcharme-werfenweng"
+                      }
+                    }
+                  },
+                  {
+                    "addon_id": 4503,
+                    "charging_strategy": ["once", "party"],
+                    "name": "hotel-10181-6-gang-dinner",
+                    "global": false,
+                    "charge_type": "daily",
+                    "addon_in_room": null,
+                    "addon_mandatory_in_room": null,
+                    "picture": [],
+                    "picture_id": 66399,
+                    "rev": 1,
+                    "description": "Nachmittagsjause und 6-G\u00e4nge-Abendmen\u00fc",
+                    "description_long": "Genie\u00dfen Sie einen Abend lang absolute Genussmomente bei einem 6-G\u00e4nge-Wahlmen\u00fc. Freuen Sie sich auf alpine Speisen und internationale Gerichte, die Sie staunen lassen werden! Beenden Sie einen spannenden Tag Ihres Aufenthaltes mit einem kulinarischen Hochgenuss, wie es sich f\u00fcr einen richtigen Wellnessurlaub geh\u00f6rt!\n",
+                    "translation_status": 1,
+                    "_links": {
+                      "self": { "href": "/addons/hotel-10181-6-gang-dinner" }
+                    }
+                  },
+                  {
+                    "addon_id": 4517,
+                    "charging_strategy": ["once", "party"],
+                    "name": "hotel-11014-6-gang-dinner",
+                    "global": false,
+                    "charge_type": "daily",
+                    "addon_in_room": null,
+                    "addon_mandatory_in_room": null,
+                    "picture": [],
+                    "picture_id": 66570,
+                    "rev": 1,
+                    "description": "Einmaliges 6-G\u00e4nge-Men\u00fc",
+                    "description_long": "Sie w\u00fcnschen sich ein romantisches und wohlmundendes Dinner? Dann ist das einmalige 6-Gang-Abendwahlmen\u00fc im 5*S Alpin Palace genau das Richtige f\u00fcr Sie. Lassen Sie sich kulinarische auf allen Ebenen verw\u00f6hnen, genie\u00dfen Sie internationale und nationale Gaumenfreuden und verbringen Sie den wundervollen Abend in entspannter Atmosph\u00e4re.\n",
+                    "translation_status": 1,
+                    "_links": {
+                      "self": { "href": "/addons/hotel-11014-6-gang-dinner" }
+                    }
+                  },
+                  {
+                    "addon_id": 4618,
+                    "charging_strategy": ["once", "person"],
+                    "name": "hotel-11356-three-course-menu-smart-flats",
+                    "global": false,
+                    "charge_type": "daily",
+                    "addon_in_room": null,
+                    "addon_mandatory_in_room": null,
+                    "picture": [],
+                    "picture_id": 68582,
+                    "rev": 1,
+                    "description": "Einmaliges 3-Gang Abendessen im Restaurant EGGER Wirt",
+                    "description_long": "Zum Rundum-Verw\u00f6hnprogramm des smart Hotels geh\u00f6ren auch kulinarische Spezialit\u00e4ten aus der Region und Klassiker der internationalen K\u00fcche. Genuss pur also! Diesen k\u00f6nnen Sie bei einem abwechslungsreichen, k\u00f6stlichen 3-G\u00e4nge Men\u00fc genie\u00dfen. Lassen Sie den Urlaubstag in entspannter Atmosph\u00e4re des Hotelrestaurants und bei kreativen Gerichten ausklingen und gehen Sie auf kulinarische Entdeckungsreise.\n",
+                    "translation_status": 1,
+                    "_links": {
+                      "self": {
+                        "href": "/addons/hotel-11356-three-course-menu-smart-flats"
+                      }
+                    }
+                  },
+                  {
+                    "addon_id": 4853,
+                    "charging_strategy": ["once", "person"],
+                    "name": "abendessen",
+                    "global": true,
+                    "charge_type": "night",
+                    "addon_in_room": null,
+                    "addon_mandatory_in_room": null,
+                    "picture": [],
+                    "picture_id": 355610,
+                    "rev": 1,
+                    "description": "Abendessen",
+                    "description_long": "Lass deinen Abend entspannt ausklingen und g\u00f6nn dir zum Abschluss des Tages einen kulinarischen Hochgenuss. Das Dinner verw\u00f6hnt dich und deinen Gaumen wahlweise mit internationalen Kreationen, regionalen Schmankerln und k\u00f6stlichen Klassikern. So findest du garantiert das perfekte Gericht, bei dem du deinen Urlaubstag noch einmal geb\u00fchrend Revue passieren lassen kannst.",
+                    "translation_status": 1,
+                    "_links": { "self": { "href": "/addons/abendessen" } }
+                  }
+                ]
+              }
+            },
+            {
+              "addon_id": 118,
+              "price": null,
+              "party": { "adults": 2 },
+              "extra_information": null,
+              "charging_strategy": ["daily", "party"],
+              "mandatory": true,
+              "inclusive": false,
+              "charge_type": "night",
+              "picture": {
+                "picture_id": 11383,
+                "rev": 1,
+                "raw": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/raw.jpg?rev=1",
+                "raw_edited": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/raw_edited.jpg?rev=1",
+                "third": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/third.jpg?rev=1",
+                "wide": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/wide.jpg?rev=1",
+                "double": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/double.jpg?rev=1",
+                "full": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/full.jpg?rev=1",
+                "deal": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/deal.jpg?rev=1",
+                "event_booking": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/event_booking.jpg?rev=1",
+                "event_room": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/event_room.jpg?rev=1",
+                "2col_teaser_big": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/2col_teaser_big.jpg?rev=1",
+                "2col_teaser_small": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/2col_teaser_small.jpg?rev=1",
+                "3col_teaser_big": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/3col_teaser_big.jpg?rev=1",
+                "3col_teaser_small": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/3col_teaser_small.jpg?rev=1",
+                "square_teaser": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/square_teaser.jpg?rev=1",
+                "offer_teaser_desktop": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/offer_teaser_desktop.jpg?rev=1",
+                "offer_teaser_ncol": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/offer_teaser_ncol.jpg?rev=1",
+                "offer_teaser_mobile": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/offer_teaser_mobile.jpg?rev=1",
+                "offer_teaser_square": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/offer_teaser_square.jpg?rev=1",
+                "feed_newsletter_wide": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/feed_newsletter_wide.jpg?rev=1",
+                "feed_newsletter_square": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/feed_newsletter_square.jpg?rev=1",
+                "gallery_hd": "https://travelcircus-production.s3.amazonaws.com/pictures/11383/gallery_hd.jpg?rev=1"
+              },
+              "modified_at": null,
+              "description": "Freie Nutzung des Wellnessbereichs",
+              "description_long": "Zur\u00fccklehnen, zur Ruhe kommen und tiefe Entspannung finden. Bei einem Besuch im Wellnessbereich bringst du K\u00f6rper, Geist und Seele ganz leicht wieder in harmonischen Einklang. Tanke mit den vielseitigen Wellness- und Verw\u00f6hnangeboten neue Kraft und sperre die Hektik und den Stress des Alltags einfach aus. Hier genie\u00dft du deinen Wohlf\u00fchlurlaub in vollen Z\u00fcgen.",
+              "translation_status": 1,
+              "_links": {
+                "self": { "href": "/hotels/17080/addons/wellness-global" }
+              }
+            }
+          ],
+          "extra_bed_age_ranges": [
+            { "min_age": 0, "max_age": 7 },
+            { "min_age": 8, "max_age": 12 },
+            { "min_age": 13, "max_age": null }
+          ]
+        }
+      }
+    ]
+  }
+}
