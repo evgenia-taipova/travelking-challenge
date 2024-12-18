@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flatpickr with Prices</title>
+    <title>Travelking with Prices</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
@@ -16,27 +16,81 @@
     />
 
     <style>
+      :root {
+        --primary-color: #2a9d8f;
+        --secondary-color: #21867a;
+        --background-color: #f9f9f9;
+        --text-color-dark: #333;
+        --text-color-light: #555;
+        --border-color-light: #e0e0e0;
+        --border-color-dark: #ddd;
+        --highlight-color: #45a049;
+        --error-color: #ff0000;
+        --price-low-color: #d4f8e8;
+        --price-middle-color: #fff3cd;
+        --price-high-color: #f8d7da;
+      }
+      html {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+      html,
+      body {
+        height: 100%;
+      }
       body {
         font-family: "Nunito", sans-serif;
         font-style: normal;
-        background-color: #f9f9f9;
+        background-color: var(--background-color);
         margin: 0;
         padding: 20px;
       }
-      #open-calendar {
-        padding: 10px 20px; /* Увеличиваем размер */
-        font-size: 1.1em; /* Немного увеличиваем шрифт */
+      header {
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 2px solid var(--border-color-light);
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        margin: 0;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 1.1em;
         font-weight: bold;
-        color: #fff; /* Текст белый */
-        background-color: #2a9d8f; /* Основной цвет кнопки */
+        color: #fff;
+        background-color: var(--primary-color);
         border: none;
-        border-radius: 4px; /* Более округлые края */
+        border-radius: 4px;
         cursor: pointer;
-        transition: all 0.3s ease; /* Плавный переход для всех изменений */
       }
-      #open-calendar:hover {
-        background-color: #21867a;
+      button:hover {
+        background-color: var(--secondary-color);
       }
+
+      .selected-dates {
+        margin: 10px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      .selected-dates p {
+        font-size: 28px;
+        margin: 10px;
+      }
+
+      .open-calendar-block {
+        display: flex;
+        justify-content: center;
+      }
+
       #overlay {
         position: fixed;
         top: 0;
@@ -49,13 +103,13 @@
         align-items: center;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
       }
 
       #overlay.show {
         opacity: 1;
         visibility: visible;
       }
+
       .flatpickr-day {
         display: flex;
         flex-direction: column;
@@ -65,55 +119,88 @@
         width: 36px;
         height: 36px;
         border-radius: 50%;
-        padding: 0;
+        padding: 4px;
         font-size: 14px;
         line-height: 1;
         overflow: hidden;
-        transition: background-color 0.3s, transform 0.2s;
       }
 
-      .flatpickr-day:hover {
-        background-color: #f0f8ff;
-        transform: scale(1.1);
-      }
-
-      .price-label {
-        margin-top: 2px;
-        font-size: 10px;
-        color: #666;
-        text-align: center;
+      .rangeMode .flatpickr-day.selected,
+      .rangeMode .flatpickr-day.startRange,
+      .rangeMode .flatpickr-day.endRange {
+        border-color: var(--primary-color) !important;
+        color: var(--text-color-dark) !important;
       }
 
       .flatpickr-day.price-low {
-        background-color: #d4f8e8 !important;
+        background-color: var(--price-low-color) !important;
       }
 
       .flatpickr-day.price-middle {
-        background-color: #fff3cd !important;
+        background-color: var(--price-middle-color) !important;
       }
 
       .flatpickr-day.price-high {
-        background-color: #f8d7da !important;
+        background-color: var(--price-high-color) !important;
       }
 
-      #min-nights-popup {
-        display: none;
+      .price-label {
+        font-size: 10px;
+        color: var(--text-color-light);
+        text-align: center;
+      }
+
+      #calendar-block {
         position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        max-width: 800px;
         background: #fff;
-        border: 1px solid #ccc;
-        padding: 8px;
-        border-radius: 4px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
+        padding: 30px 40px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
       }
-
-      .selected-dates {
-        margin: 20px;
-        font-size: 16px;
+      #calendar-header {
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: var(--text-color-dark);
+        padding: 10px 0;
+        border-bottom: 2px solid var(--border-color-light);
+      }
+      .close-calendar {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border: none;
+        color: var(--text-color-dark);
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
         display: flex;
         align-items: center;
-        flex-direction: column;
+        justify-content: center;
       }
+
+      .close-calendar:hover {
+        color: var(--error-color);
+      }
+
+      #calendar-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
       #room-list {
         display: flex;
         flex-wrap: wrap;
@@ -121,22 +208,20 @@
         justify-content: center;
         padding: 50px 0px;
       }
-      /* Основной контейнер карточки */
+
       .room-item {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        border: 1px solid #ddd;
+        border: 1px solid var(--border-color-dark);
         background-color: #fff;
         max-width: 700px;
       }
 
-      /* Изображение слева */
       .room-item img {
         object-fit: cover;
       }
 
-      /* Правая сторона карточки */
       .room-content {
         display: flex;
       }
@@ -145,7 +230,7 @@
         display: flex;
         flex-direction: column;
         padding: 10px;
-        border-left: 1px solid #ddd;
+        border-left: 1px solid var(--border-color-dark);
         flex-grow: 1;
       }
 
@@ -153,13 +238,13 @@
         font-size: 1.4em;
         margin: 0;
         margin-bottom: 8px;
-        color: #333;
+        color: var(--text-color-dark);
       }
 
       .room-details p {
         margin: 0;
         font-size: 1em;
-        color: #555;
+        color: var(--text-color-light);
       }
 
       .room-details ul {
@@ -173,17 +258,11 @@
       }
 
       .room-details ul li {
-        background-color: #f0f0f0; /* опционально: фон для элементов */
+        background-color: #f0f0f0;
         padding: 5px 10px;
-        border-radius: 5px; /* опционально: закругленные углы */
-        font-size: 0.9em; /* изменяем размер текста */
-        color: #333;
-      }
-      /* Блок с ночами и людьми */
-      .room-meta {
+        border-radius: 5px;
         font-size: 0.9em;
-        color: #555;
-        margin-top: 10px;
+        color: var(--text-color-dark);
       }
 
       .room-price-section {
@@ -191,10 +270,10 @@
         align-items: center;
         justify-content: space-between;
         gap: 60px;
-        border-top: 1px solid #ddd;
-        width: 100%; /* Растягивает блок на всю ширину родителя */
-        box-sizing: border-box; /* Учитывает padding и border в ширине */
-        padding: 10px 20px; /* Добавляем небольшой отступ сверху для эстетики */
+        border-top: 1px solid var(--border-color-dark);
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 20px;
       }
 
       .room-price {
@@ -204,13 +283,13 @@
       .room-price .total-price {
         font-size: 1.2em;
         font-weight: bold;
-        color: #2a9d8f;
+        color: var(--primary-color);
         margin: 0;
       }
 
       .room-price .price-per-person {
         font-size: 0.9em;
-        color: #555;
+        color: var(--text-color-light);
         margin: 0;
       }
 
@@ -220,119 +299,32 @@
       }
       .room-actions p {
         font-size: 0.9em;
-        color: #555;
-      }
-      /* Кнопка "Выбрать" */
-      .room-actions button {
-        padding: 10px 20px; /* Увеличиваем размер */
-        font-size: 1.1em; /* Немного увеличиваем шрифт */
-        font-weight: bold;
-        color: #fff; /* Текст белый */
-        background-color: #2a9d8f; /* Основной цвет кнопки */
-        border: none;
-        border-radius: 4px; /* Более округлые края */
-        cursor: pointer;
-        transition: all 0.3s ease; /* Плавный переход для всех изменений */
-      }
-
-      .room-actions button:hover {
-        background-color: #21867a; /* Цвет темнее при наведении */
-        transform: scale(1.05); /* Легкое увеличение при наведении */
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Увеличение тени */
-      }
-
-      .room-actions button:active {
-        transform: scale(0.95); /* Легкое уменьшение при клике */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Уменьшение тени */
-      }
-      #calendar-block {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 800px;
-        background: #fff;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-      }
-      #calendar-header {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 1.2em;
-        font-weight: bold;
-        color: #555;
-      }
-      .close-calendar {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 30px;
-        height: 30px;
-        background: none;
-        border: none;
-        color: #333;
-        font-size: 24px;
-        font-weight: bold;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .close-calendar:hover {
-        color: #ff0000; /* Красный при наведении */
-      }
-      .check-rooms {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #4caf50; /* Зелёный */
-        color: #fff;
-        font-size: 16px;
-        font-weight: bold;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-      }
-
-      .check-rooms:hover {
-        background-color: #45a049; /* Лёгкое увеличение */
+        color: var(--text-color-light);
       }
     </style>
   </head>
   <body>
-    <div class="selected-dates" id="selected-dates">
-      <p>Selected dates:</p>
-      <div style="display: flex; gap: 10px">
-        <p id="check-in">Check-in: N/A</p>
-        <p id="check-out">Check-out: N/A</p>
-      </div>
-    </div>
-    <div style="display: flex; justify-content: center">
-      <button id="open-calendar">Choose dates</button>
-    </div>
-
-    <div id="overlay">
-      <div id="calendar-block">
-        <button id="close-calendar" class="close-calendar">&times;</button>
-        <div id="calendar-header">Select your dates</div>
-        <div id="calendar-container"></div>
-        <button id="submit-dates" disabled class="check-rooms">
-          Check Rooms
-        </button>
-      </div>
-    </div>
-
-    <div id="min-nights-popup">
-      <span id="min-nights-text"></span>
-    </div>
-
-    <div id="room-list"></div>
-
+    <header>
+      <h1>Travelking Challenge</h1>
+    </header>
+    <main>
+      <section class="date-picker">
+        <div class="selected-dates" id="selected-dates">
+          <p id="dates-text">Select your dates</p>
+        </div>
+        <div class="open-calendar-block">
+          <button id="open-calendar">Choose dates</button>
+        </div>
+        <div id="overlay">
+          <div id="calendar-block">
+            <button id="close-calendar" class="close-calendar">&times;</button>
+            <div id="calendar-header">Select your dates</div>
+            <div id="calendar-container"></div>
+            <button id="submit-dates" disabled>Check Rooms</button>
+          </div>
+        </div>
+      </section>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
       const openCalendarButton = document.getElementById("open-calendar");
@@ -340,164 +332,180 @@
       const overlay = document.getElementById("overlay");
       const calendarContainer = document.getElementById("calendar-container");
       const submitDatesButton = document.getElementById("submit-dates");
-
-      const checkInText = document.getElementById("check-in");
-      const checkOutText = document.getElementById("check-out");
-      const roomList = document.getElementById("room-list");
+      const datesText = document.getElementById("dates-text");
 
       let calendarInstance = null;
       let selectedDates = [];
 
-      openCalendarButton.addEventListener("click", () => {
-        overlay.classList.add("show");
-
-        if (!calendarInstance) {
-          const calendarInput = document.createElement("input"); // Динамически создаем input
-          calendarInput.id = "calendar"; // Добавляем ID для Flatpickr
-          calendarContainer.appendChild(calendarInput);
-
-          initCalendar(); // Инициализируем календарь
-        }
-      });
-
-      closeCalendarButton.addEventListener("click", () => {
-        overlay.classList.remove("show");
-
-        if (calendarInstance) {
-          calendarInstance.destroy(); // Уничтожаем инстанс Flatpickr
-          calendarInstance = null;
-
-          // Удаляем input календаря, чтобы скрыть его из DOM
-          calendarContainer.innerHTML = "";
-        }
-      });
-      async function fetchAvailability() {
-        const url =
-          "https://api.travelcircus.net/hotels/17080/checkins?E&party=%7B%22adults%22:2,%22children%22:%5B%5D%7D&domain=de&date_start=2025-01-01&date_end=2025-06-31";
+      async function fetchData(url) {
         try {
           const response = await fetch(url);
-          if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-          }
-
-          const data = await response.json();
-          return data._embedded.hotel_availabilities.map((item) => ({
-            date: item.date,
-            price: item.price,
-            min_nights: item.min_nights,
-            price_position: item.price_position,
-          }));
+          if (!response.ok) throw new Error(`Error: ${response.status}`);
+          return await response.json();
         } catch (error) {
-          console.error("Error fetching availability:", error.message);
-          return [];
+          console.error("API error:", error.message);
+          return null;
         }
       }
 
+      // Open Calendar on button click
+      openCalendarButton.addEventListener("click", () => {
+        overlay.classList.add("show");
+        if (!calendarInstance) initCalendar();
+      });
+
+      // Close Calendar function
+      function closeCalendar() {
+        overlay.classList.remove("show");
+        if (calendarInstance) {
+          calendarInstance.destroy();
+          calendarInstance = null;
+          calendarContainer.innerHTML = "";
+        }
+      }
+
+      // Close calendar on button click
+      closeCalendarButton.addEventListener("click", closeCalendar);
+
+      // Fetch available dates and prices from API
+      // async function fetchAvailability() {
+      //   const url =
+      //     "https://api.travelcircus.net/hotels/17080/checkins?E&party=%7B%22adults%22:2,%22children%22:%5B%5D%7D&domain=de&date_start=2025-01-01&date_end=2025-06-31";
+      //   try {
+      //     const response = await fetch(url);
+      //     if (!response.ok) {
+      //       throw new Error(`Response status: ${response.status}`);
+      //     }
+
+      //     const data = await response.json();
+      //     return data._embedded.hotel_availabilities.map((item) => ({
+      //       date: item.date,
+      //       price: item.price,
+      //       price_position: item.price_position,
+      //     }));
+      //   } catch (error) {
+      //     console.error("Error fetching availability:", error.message);
+      //     return [];
+      //   }
+      // }
+      async function fetchAvailability() {
+        const url =
+          "https://api.travelcircus.net/hotels/17080/checkins?E&party=%7B%22adults%22:2,%22children%22:%5B%5D%7D&domain=de&date_start=2025-01-01&date_end=2025-06-31";
+        const data = await fetchData(url);
+        return data
+          ? data._embedded.hotel_availabilities.map(
+              ({ date, price, price_position }) => ({
+                date,
+                price,
+                price_position,
+              })
+            )
+          : [];
+      }
+
+      // Initialize calendar with availability data
       async function initCalendar() {
         const availability = await fetchAvailability();
-
         const availableDates = availability.map((day) => day.date);
         const availabilityMap = availability.reduce((map, day) => {
           map[day.date] = day;
           return map;
         }, {});
 
-        calendarInstance = flatpickr("#calendar", {
+        calendarInstance = flatpickr(calendarContainer, {
           dateFormat: "Y-m-d",
           inline: true,
           enable: availableDates,
           mode: "range",
           showMonths: 2,
-          onChange: (dates) => {
-            selectedDates = dates;
-            if (dates.length === 2) {
-              const checkIn = dates[0].toLocaleDateString("en-CA");
-              const checkOut = dates[1].toLocaleDateString("en-CA");
-              checkInText.textContent = `Check-in: ${checkIn}`;
-              checkOutText.textContent = `Check-out: ${checkOut}`;
-              submitDatesButton.disabled = false;
-            }
-          },
-          onDayCreate: (dObj, dStr, fp, dayElem) => {
-            const date = fp.formatDate(dayElem.dateObj, "Y-m-d");
-            const dayData = availabilityMap[date];
-            if (dayData) {
-              const priceLabel = document.createElement("span");
-              priceLabel.classList.add("price-label");
-              priceLabel.textContent = `$${dayData.price}`;
-              dayElem.appendChild(priceLabel);
-              dayElem.classList.add(`price-${dayData.price_position}`);
-            }
-          },
+          minDate: "today",
+          onChange: handleDateChange,
+          onDayCreate: (dObj, dStr, fp, dayElem) =>
+            handleDayCreation(dayElem, fp, availabilityMap),
         });
       }
+
+      // Handle date selection in the calendar
+      function handleDateChange(selectedDatesArr) {
+        selectedDates = selectedDatesArr;
+        const isRangeSelected = selectedDates.length === 2;
+
+        submitDatesButton.disabled = !isRangeSelected;
+        datesText.textContent = isRangeSelected
+          ? `From: ${selectedDates[0].toLocaleDateString()} To: ${selectedDates[1].toLocaleDateString()}`
+          : "Select your dates";
+      }
+
+      // Handle day creation (add price info to calendar days)
+      function handleDayCreation(dayElem, fp, availabilityMap) {
+        const date = fp.formatDate(dayElem.dateObj, "Y-m-d");
+        const dayData = availabilityMap[date];
+        if (dayData) {
+          dayElem.innerHTML += `<span class="price-label">$${dayData.price}</span>`;
+          dayElem.classList.add(`price-${dayData.price_position}`);
+        }
+      }
+
+      // Handle room selection after dates are chosen
       submitDatesButton.addEventListener("click", async () => {
         if (selectedDates.length !== 2) return;
 
-        const checkIn = selectedDates[0].toLocaleDateString("en-CA");
-        const checkOut = selectedDates[1].toLocaleDateString("en-CA");
-        console.log("In", checkIn);
-        console.log("Out", checkOut);
+        const [checkIn, checkOut] = selectedDates.map((date) =>
+          date.toLocaleDateString()
+        );
 
-        const url = `https://api.travelcircus.net/hotels/17080/quotes?locale=de_DE&checkin=${checkIn}&checkout=${checkOut}&party=%7B%22adults%22:2,%22children%22:[]%7D&domain=de`;
-
-        try {
-          const response = await fetch(url);
-          if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-          }
-
-          const data = await response.json();
-          console.log("Rooms", data._embedded.hotel_quotes);
-          displayRooms(data._embedded.hotel_quotes);
-          console.log("Here");
-        } catch (error) {
-          console.error("Error fetching rooms:", error.message);
+        const roomsData = await fetchRooms(checkIn, checkOut);
+        if (roomsData) {
+          displayRooms(roomsData);
         }
+        closeCalendar();
       });
 
-      // Функция для отображения комнат
+      // Fetch available rooms for selected dates
+      async function fetchRooms(checkIn, checkOut) {
+        const url = `https://api.travelcircus.net/hotels/17080/quotes?locale=de_DE&checkin=${checkIn}&checkout=${checkOut}&party=%7B%22adults%22:2,%22children%22:[]%7D&domain=de`;
+        const data = await fetchData(url);
+        return data ? data._embedded.hotel_quotes : [];
+      }
+
       function displayRooms(rooms) {
-        console.log(rooms);
-        const roomList = document.getElementById("room-list");
-        roomList.innerHTML = "";
+        let roomList = document.getElementById("room-list");
+        if (!roomList) {
+          roomList = document.createElement("div");
+          roomList.id = "room-list";
+          document.body.appendChild(roomList);
+        }
 
-        rooms.forEach((room) => {
-          console.log("hi");
-          const roomDiv = document.createElement("div");
-          roomDiv.classList.add("room-item");
+        roomList.innerHTML = rooms.map((room) => createRoomHtml(room)).join("");
+      }
 
-          const imageUrl = room._embedded.pictures[0].offer_teaser_square;
-          console.log(imageUrl);
+      function createRoomHtml(room) {
+        const imageUrl = room._embedded.pictures[0].offer_teaser_square;
+        const amenities = room._embedded.amenities
+          .map((amenity) => `<li>${amenity.description}</li>`)
+          .join("");
 
-          const amenitiesList = room._embedded.amenities
-            .map((amenity) => `<li>${amenity.description}</li>`)
-            .join("");
-          console.log(amenitiesList);
-
-          roomDiv.innerHTML = `
-          <div class="room-content">
-            <img src="${imageUrl}" alt="Room Image" />
-            <div class="room-details">
-              <h3>${room.name}</h3>
-              <p>Room size: ${room.room_size_min} m²</p>
-              <ul>${amenitiesList}</ul>
-            </div>
-          </div>
-          <div class="room-price-section">
-            <div class="room-price">
-              <p class="total-price">${room.full_formatted_price}</p>
-              <p class="price-per-person">
-                Per person: ${room.full_price_pp} ${room.currency_symbol}
-              </p>
-            </div>
-            <div class="room-actions">
-              <p>${room.fullPriceBreakdown.nights} nights / 2 adults</p>
-              <button>Select</button>
-            </div>
-          </div>`;
-          roomList.appendChild(roomDiv);
-        });
+        return `
+            <div class="room-item">
+              <div class="room-content">
+                <img src="${imageUrl}" alt="Room Image" />
+                <div class="room-details">
+                  <h3>${room.name}</h3>
+                  <p>Room size: ${room.room_size_min} m²</p>
+                  <ul>${amenities}</ul>
+                </div>
+              </div>
+              <div class="room-price-section">
+                <div class="room-price">
+                  <p class="total-price">${room.full_formatted_price}</p>
+                  <p class="price-per-person">Per person: ${room.full_price_pp} ${room.currency_symbol}</p>
+                </div>
+                <div class="room-actions">
+                  <p>${room.fullPriceBreakdown.nights} nights / 2 adults</p>
+                  <button>Select</button>
+                </div>
+              </div>
+            </div>`;
       }
     </script>
   </body>
