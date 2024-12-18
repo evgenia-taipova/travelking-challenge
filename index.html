@@ -337,6 +337,7 @@
       let calendarInstance = null;
       let selectedDates = [];
 
+      // Fetches data from the provided API URL
       async function fetchData(url) {
         try {
           const response = await fetch(url);
@@ -351,8 +352,11 @@
       // Open Calendar on button click
       openCalendarButton.addEventListener("click", () => {
         overlay.classList.add("show");
-        if (!calendarInstance) initCalendar();
+        if (!calendarInstance) initCalendar(); // Initialize calendar if not already done
       });
+
+      // Close calendar on button click
+      closeCalendarButton.addEventListener("click", closeCalendar);
 
       // Close Calendar function
       function closeCalendar() {
@@ -364,30 +368,7 @@
         }
       }
 
-      // Close calendar on button click
-      closeCalendarButton.addEventListener("click", closeCalendar);
-
-      // Fetch available dates and prices from API
-      // async function fetchAvailability() {
-      //   const url =
-      //     "https://api.travelcircus.net/hotels/17080/checkins?E&party=%7B%22adults%22:2,%22children%22:%5B%5D%7D&domain=de&date_start=2025-01-01&date_end=2025-06-31";
-      //   try {
-      //     const response = await fetch(url);
-      //     if (!response.ok) {
-      //       throw new Error(`Response status: ${response.status}`);
-      //     }
-
-      //     const data = await response.json();
-      //     return data._embedded.hotel_availabilities.map((item) => ({
-      //       date: item.date,
-      //       price: item.price,
-      //       price_position: item.price_position,
-      //     }));
-      //   } catch (error) {
-      //     console.error("Error fetching availability:", error.message);
-      //     return [];
-      //   }
-      // }
+      // Fetches availability data for the calendar
       async function fetchAvailability() {
         const url =
           "https://api.travelcircus.net/hotels/17080/checkins?E&party=%7B%22adults%22:2,%22children%22:%5B%5D%7D&domain=de&date_start=2025-01-01&date_end=2025-06-31";
@@ -403,7 +384,7 @@
           : [];
       }
 
-      // Initialize calendar with availability data
+      // Initializes the Flatpickr calendar with availability data
       async function initCalendar() {
         const availability = await fetchAvailability();
         const availableDates = availability.map((day) => day.date);
@@ -425,7 +406,7 @@
         });
       }
 
-      // Handle date selection in the calendar
+      // Handles date selection in the calendar and updates UI accordingly
       function handleDateChange(selectedDatesArr) {
         selectedDates = selectedDatesArr;
         const isRangeSelected = selectedDates.length === 2;
@@ -436,7 +417,7 @@
           : "Select your dates";
       }
 
-      // Handle day creation (add price info to calendar days)
+      // Adds price information to calendar days
       function handleDayCreation(dayElem, fp, availabilityMap) {
         const date = fp.formatDate(dayElem.dateObj, "Y-m-d");
         const dayData = availabilityMap[date];
@@ -468,6 +449,7 @@
         return data ? data._embedded.hotel_quotes : [];
       }
 
+      // Displays the list of rooms in the UI
       function displayRooms(rooms) {
         let roomList = document.getElementById("room-list");
         if (!roomList) {
@@ -479,6 +461,7 @@
         roomList.innerHTML = rooms.map((room) => createRoomHtml(room)).join("");
       }
 
+      // Generates HTML for a single room
       function createRoomHtml(room) {
         const imageUrl = room._embedded.pictures[0].offer_teaser_square;
         const amenities = room._embedded.amenities
